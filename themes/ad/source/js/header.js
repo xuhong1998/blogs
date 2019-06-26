@@ -46,18 +46,18 @@
     }
   });
 
-  navBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    layer.style.display = 'block';
-    layerContent.style.display = 'none';
-    nav.style.right = '0';
+  // navBtn.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   layer.style.display = 'block';
+  //   layerContent.style.display = 'none';
+  //   nav.style.right = '0';
 
-    window.AD_CONFIG.layer.add(() => {
-      nav.style.right = '';
-      layer.style.display = 'none';
-      layerContent.style.display = '';
-    });
-  });
+  //   window.AD_CONFIG.layer.add(() => {
+  //     nav.style.right = '';
+  //     layer.style.display = 'none';
+  //     layerContent.style.display = '';
+  //   });
+  // });
   
 })();
