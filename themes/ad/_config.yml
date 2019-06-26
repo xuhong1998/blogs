@@ -1,11 +1,11 @@
-author: Dong Yuanxin
+author: Dong XUHONG
 
 keywords: Hexo, Theme-AD
 
 description: 徐宏的小站
 
 # 导航栏头部名称
-nav_name: GODBMW
+nav_name: XUHONG
 
 # 导航栏座右铭
 motto: "安静写些东西"
@@ -110,7 +110,7 @@ nav:
   #   path: "/friends/"
   # -
   #   name: "关于"
-    path: "/about/"
+    # path: "/about/"
 
 footer:
   - 
