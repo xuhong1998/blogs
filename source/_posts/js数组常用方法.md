@@ -205,6 +205,14 @@ item： 必须。查找的元素。
 
 start：可选的整数参数。规定在数组中开始检索的位置。如省略该参数，则将从 array[array.length-1]开始检索。
  
+ ```JavaScript
+ 	var arr = [1,4,7,10,7,18,7,26];
+	console.log(arr.indexOf(7));        // 2
+	console.log(arr.lastIndexOf(7));    // 6
+	console.log(arr.indexOf(7,4));      // 4
+	console.log(arr.lastIndexOf(7,2));  // 2
+	console.log(arr.indexOf(5));        // -1
+ ```
 ## 5个迭代方法：forEach()、map()、filter()、some()、every()
 
 这几个方法语法都一样，都不会改变原数组。
@@ -221,11 +229,30 @@ arr :  可选。当前元素所属的数组对象。
 
 thisValue： 可选。传递给函数的值一般用 "this" 值。如果这个参数为空， "undefined" 会传递给 "this" 值
 
+```javaScript
+	var Arr = [1,4,7,10];
+	Arr.forEach(function(currentValue, index, arr){
+		console.log(index+"--"+currentValue+"--"+(arr === Arr));		
+	})
+	// 输出：
+	// 0--1--true
+	// 1--4--true
+	// 2--7--true
+	// 3--10--true
+```
 map()：指“映射”，方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。
 
 语法：array.map(function(currentValue , index , arr){//do something}, thisValue)  
 
 map方法实现数组中每个数求平方：
+
+```javaScript
+	var arr = [1,4,8,10];
+    var arr2 = arr.map(function(currentValue){
+        return currentValue*currentValue;
+    });
+    console.log(arr2);  // [1, 16, 64, 100]
+```
 
 filter()： “过滤”功能，方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素。和filter() 方法类似，jquery中有个 grep()方法也用于数组元素过滤筛选。
 
@@ -233,15 +260,51 @@ filter()： “过滤”功能，方法创建一个新数组, 其包含通过所
 
 filter方法实现筛选排除掉所有小于5的元素
 
+```javaScript
+	var arr = [1,4,6,8,10];
+    var result1 = arr.filter(function(currentValue){
+        return currentValue>5;
+    });
+    console.log(result1);  // [6, 8, 10]
+    var result2 = arr.filter(function(currentValue){
+        return currentValue>"5";
+    });
+    console.log(result2);  // [6, 8, 10]
+```
+
 当我们分别设置item > 5和item > "5"时, 返回的结果是一样的，由此我们可以看出函数支持弱等于（==），不是必须全（===）。
 
 every()：判断数组中每一项都是否满足条件，只有所有项都满足条件，才会返回true。
 
 语法： array.every(function(currentValue , index , arr){//do something}, thisValue) 
 
+```javaScript
+	var arr = [1,4,6,8,10];
+	var result1 = arr.every(function(currentValue){
+	    return currentValue< 12;
+	});
+	console.log(result1);  // true
+	var result2 = arr.every(function(currentValue){
+	    return currentValue> 1;
+	});
+	console.log(result2);  // false
+```
+
 some()：判断数组中是否存在满足条件的项，只要有一项满足条件，就会返回true。
 
 语法： array.some(function(currentValue , index , arr){//do something}, thisValue)
+
+```javaScript
+	var arr = [1,4,6,8,10];
+	var result1 = arr.some(function(currentValue){
+	    return currentValue> 10;
+	});
+	console.log(result1);  // false
+	var result2 = arr.some(function(currentValue){
+	    return currentValue> 5;
+	});
+	console.log(result2);  // true
+```
 
 2个归并方法：reduce()、reduceRight()
 
@@ -263,15 +326,51 @@ arr：可选。当前元素所属的数组对象。
 
 initialValue：可选。传递给函数的初始值。
 
+下面代码实现数组求和：
+
+```javaScript
+	var arr = [1,4,6,8,10];
+	var result1 = arr.some(function(currentValue){
+	    return currentValue> 10;
+	});
+	console.log(result1);  // false
+	var result2 = arr.some(function(currentValue){
+	    return currentValue> 5;
+	});
+	console.log(result2);  // true
+```
+
 # ES6数组新增方法（注意浏览器兼容）
 
 ## 1.Array.from()
 
 方法是用于类似数组的对象（即有length属性的对象）和可遍历对象转为真正的数组。
 
+```javaScript
+	let json ={
+	    '0':'卢',
+	    '1':'本',
+	    '2':'伟',
+	    length:3
+	}
+	let arr = Array.from(json);
+	console.log(arr); // ["卢", "本", "伟"]	
+```
+
 ## 2.Array.of()
 
 方法是将一组值转变为数组，参数不分类型，只分数量，数量为0返回空数组。
+
+```javaScript
+	let arr1 = Array.of(1,2,3);	
+	let arr2 = Array.of([1,2,3]);
+	let arr3 = Array.of(undefined);
+	let arr4 = Array.of();
+	console.log(arr1); // [1, 2, 3]
+	console.log(arr2); // [[1, 2, 3]]
+	console.log(arr3); // [undefined]
+	console.log(arr4); // []
+```
 
 ## 3.find()
 
@@ -281,11 +380,54 @@ initialValue：可选。传递给函数的初始值。
 
 注意：find() 对于空数组，函数是不会执行的。find() 并没有改变数组的原始值。
 
+```javaScript
+	let Arr = [1,2,5,7,5,9];
+	let result1 = Arr.find(function(currentValue,index,arr){			
+		return currentValue>5;
+	});
+	let result2 = Arr.find(function(currentValue,index,arr){			
+		return currentValue>9;
+	});
+	console.log(result1); // 7
+	console.log(result2); // undefined
+```
+
+find()实现根据id取出数组中的对象
+
+```javaScript
+	let Arr = [
+		{
+			id:1,
+			name:"张三"
+		},
+		{
+			id:2,
+			name:"李四"
+		}		
+	];
+	let obj = Arr.find(function(currentValue,index,arr){			
+		return currentValue.id===1;
+	});
+	console.log(obj.name); // 张三
+```
+
 ## 4.findIndex ()
 
 findIndex和find差不多，不过默认返回的是索引，如果没有符合条件的元素返回 -1
 
-## 4.fill()
+```javaScript
+	let Arr = [1,2,5,7,5,9];
+	let result1 = Arr.findIndex(function(currentValue,index,arr){			
+		return currentValue>5;
+	});
+	let result2 = Arr.findIndex(function(currentValue,index,arr){			
+		return currentValue>9;
+	});
+	console.log(result1); // 3
+	console.log(result2); // -1
+```
+
+## 5.fill()
 
 fill()方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。不包括终止索引。
 
@@ -297,9 +439,68 @@ start：可选。开始填充位置。如果这个参数是负数，那么它规
 
 end：可选。停止填充位置 (默认为 array.length)。如果这个参数是负数，那么它规定的是从数组尾部开始算起。
 
+```javaScript
+	let arr = [1,2,3,4,5,6];
+    arr.fill(0);  // [0, 0, 0, 0, 0, 0]
+    arr.fill(0,1);  // [1, 0, 0, 0, 0, 0] 
+    arr.fill(0,1,2);  // [1, 0, 3, 4, 5, 6]
+    arr.fill(0,-1);  // [1, 2, 3, 4, 5, 0]
+    arr.fill(0,1,-1);  // [1, 0, 0, 0, 0, 6]
+```
+
 ## 6.遍历数组方法 keys()、values()、entries()
 
 这三个方法都是返回一个遍历器对象，可用for...of循环遍历，唯一区别：keys()是对键名的遍历、values()对键值的遍历、entries()是对键值对的遍历。
+
+keys()
+
+```javaScript
+	let arr = ["a","b","c","d"];
+	for(let i of arr.keys()){
+		console.log(i);
+	}
+    //打印：
+    // 0
+    // 1
+    // 2
+    // 3
+```
+
+values()
+
+```javaScript
+	let arr = ["a","b","c","d"];
+	for(let i of arr.values()){
+		console.log(i);
+	}
+    //打印：
+    // a
+    // b
+    // c
+    // d
+```
+
+entries()
+
+```javaScript
+	let arr = ["a","b","c","d"];
+    for(let i of arr.entries()){
+        console.log(i);
+    }
+    //打印：
+    // [0, "a"]
+    // [1, "b"]
+    // [2, "c"]
+    // [3, "d"]
+    for(let [idx,item] of arr.entries()){
+        console.log(idx+":"+item);
+    }
+    //打印：
+    // 0:a
+    // 1:b
+    // 2:c
+    // 3:d
+```
 
 ## 7.includes()
 
@@ -310,6 +511,18 @@ end：可选。停止填充位置 (默认为 array.length)。如果这个参数�
 searchElement ： 必须。需要查找的元素值。
 
 fromIndex：可选。从该索引处开始查找 searchElement。如果为负值，则按升序从 array.length + fromIndex 的索引开始搜索。默认为 0。
+
+```javaScript
+	let arr = ["a","b","c","d"];
+	let result1 = arr.includes("b");
+	let result2 = arr.includes("b",2);
+	let result3 = arr.includes("b",-1);
+	let result4 = arr.includes("b",-3);
+	console.log(result1);  // true
+	console.log(result2);  // false
+	console.log(result3);  // flase
+	console.log(result4);  // true
+```
 
 ## 8.copyWithin()
 
@@ -322,6 +535,18 @@ target ：必需。从该位置开始替换数据。
 start ：可选。从该位置开始读取数据，默认为 0 。如果为负值，表示倒数。
 
 end： 可选。到该位置前停止读取数据，默认等于数组长度。如果为负值，表示倒数。
+
+```javaScript
+	let arr = ["a","b","c","d"];
+	let result1 = arr.includes("b");
+	let result2 = arr.includes("b",2);
+	let result3 = arr.includes("b",-1);
+	let result4 = arr.includes("b",-3);
+	console.log(result1);  // true
+	console.log(result2);  // false
+	console.log(result3);  // flase
+	console.log(result4);  // true
+```
 
 
 https://blog.csdn.net/qq_39132756/article/details/85007082
