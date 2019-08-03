@@ -1,7 +1,7 @@
 keywords: xuhong  # 博客的关键词 / Blog keywords
 author: fugmdnw@qq.com  # 博客作者和联系邮箱（目前 Google 可以识别） / Blog author and email
 description: Nothing lasts forever.  # 博客描述，会显示在侧栏的 LOGO 下面 / Blog description
-avatar: /images/favicon.jpg  # 右上角的头像，可用绝对路径引入他站资源 / Avatar in the top right corner
+avatar: https://github.com/xuhong1998/img-folder/blob/master/changda/favicon.jpg  # 右上角的头像，可用绝对路径引入他站资源 / Avatar in the top right corner
 weibo: u/5070036541/home?wvr=5&uut=fin&from=reg
 github: xuhong1998
 twitter: 
