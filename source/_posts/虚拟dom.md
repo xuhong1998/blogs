@@ -11,6 +11,7 @@ tags:
 + 用js模拟DOM结构
 + DOM变化的对比，放在JS层来做
 + 提高重绘性能
+
 ```html
     <ul id="list">
         <li class="item">Item 1</li>
@@ -103,6 +104,7 @@ tags:
 + DOM操作是'昂贵'的，js运行效率高
 + 尽量减少DOM操作
 + 项目越复杂，影响越严重 
+
 ## vdom 的如何让应用，核心API是什么
 ```html
   <div class="content"></div>
@@ -140,10 +142,14 @@ tags:
 ```
 + h函数--将真实dom隐射成虚拟节点
 + patch函数--对比新旧虚拟节点（diff），找到差异，跟新到真实dom
+
 ## 介绍一下 Diff 算法
+
 #### 什么是diff算法
+
 + 比较两个文件差异
 + git diff
+
 #### vdom为何使用diff算法
 #### diff算法实现流程
 
