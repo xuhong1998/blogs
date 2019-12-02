@@ -228,7 +228,7 @@ class Tree{
         let node = this.root
         let arr = []
         let stack = []
-        let pos = null
+        let pos = root
         let temp = null
         if(!node) return arr
         stack.push(node)
