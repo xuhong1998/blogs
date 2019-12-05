@@ -76,15 +76,43 @@ console.log('d')
 
 
 ![Promise](https://mdn.mozillademos.org/files/8633/promises.png)
+### 方法
++ Promise.all(iterable) 
+> 方法返回一个实例，此实例在iterable参数内所有的Promise都resolved或者参数中不包含promise时回调完成；如果参数中promsole有一个rejected，此实例回调失败，失败原因的是第一个失败promise的结果
+***当且仅当***传入的课迭代对象为空时为同步对象
+
+```JavaScript
+Promise.all([1,2,3]).then(value => {console.log(value)})     //[1,2,3]
+Promise.all([1,2,3,Promise.resolve(444)]).then(value => {console.log(value)})    //[1,2,3,444]
+Promise.all([1,2,3,Promise.reject(22)]).then(value => {console.log(value)})      //rejected 22
+```
++ Promise.race(iterable)
+> 方法返回一个promise, 一旦迭代器中的某一个promise解决或拒绝，返回的promise就会解决或者拒绝
+
+```javaScript
+var p1 = new Promise(function(resolve,reject){
+    setTimeout(resolve,500,'one')
+})
+var p2 = new Promise(function(resolve,reject){
+    setTimeout(resolve,100,'two')
+})
+Promise.race([p1,p2]).then(value=>{
+    console.log(value)   //two
+})
+```
+
 ### promise 原型方法
 
 + Promise.prototype.catch(onRejected)
-
-> 返回一个promise,并且处理拒绝的情况
+> 返回一个promise, 并且处理拒绝的情况
 
 + Promise.prototype.then(onFulfilled,onRejected)
-
 > 返回一个promise，最多需要两个参数：Promise的成功和失败情况的回调函数。
+> 当执行 then 方法时，如果前面的 promise 已经是 resolved 状态，则直接将回调放入微任务队列中
+
++ Promise.prototype.finally(onFinally)
+> 由于无法知道promise的最终状态，所以finally的回调函数中不接受任何参数，它仅用于无论最终结果如何都要执行的情况。
+ 方法返回一个Promise，在promise结束时，无论结果是fulfilled或者是reject的，都会执行指定的回调函数。这是为在Promise是否成功完成后都需要执行的代码提供一种方式。
 
 ```javaScript
 function promise(data){
@@ -109,14 +137,6 @@ promise(false).then(res => {
 //undefined
 //2
 ```
-> 当执行 then 方法时，如果前面的 promise 已经是 resolved 状态，则直接将回调放入微任务队列中
-
-+ Promise.prototype.finally(onFinally)
-
-> 由于无法知道promise的最终状态，所以finally的回调函数中不接受任何参数，它仅用于无论最终结果如何都要执行的情况
-
-> 方法返回一个Promise,在promise结束时，无论结果是fulfilled或者是reject人的,  都会执行指定的回调函数。这为在Promise是否成功完成后都需要执行的代码提供一种方式。
-
 ## async/await(优点)
 ## 当前JS解决异步的方案
  
