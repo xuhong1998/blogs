@@ -14,18 +14,23 @@ tags: 面试 es6
 - 继承属性和不可枚举的属性是不能拷贝的
 - 原始类型会被包装为对象
 
-## create() 使用现有对象来提供新创建的对象的__proto__
+## create() 
+> 使用现有对象来提供新创建的对象的__proto__
 
-## defineProperties() 直接在一个对象上定义新的属性或修改现有的属性
-## defineProperty() 直接在一个对象上定义一个新属性，或者修改一个对象的现有属性
-## entries() 返回一个给定对象自身可枚举属性的键值对数组
+## defineProperties() 
+> 直接在一个对象上定义新的属性或修改现有的属性
+## defineProperty() 
+> 直接在一个对象上定义一个新属性，或者修改一个对象的现有属性
+## entries() 
+> 返回一个给定对象自身可枚举属性的键值对数组
 ```javaScript
 for(let [key,value] of Object.entries({a:5,b:7})){
     console.log(`${key}:${value}`)
 }
 ## fromEntries() 方法把键值对列表转换成一个对象
 ```
-## freeze 冻结一个对象，被冻结的对象都不能以任何方式被修改
+## freeze 
+> 冻结一个对象，被冻结的对象都不能以任何方式被修改
 ```javaScript
 //深冻结
 function deepFreeze(obj){
