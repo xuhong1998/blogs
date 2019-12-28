@@ -13,3 +13,9 @@ tags:
 
 +  [深入理解JavaScript原型和原型链](https://yanm1ng.github.io/2017/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3JavaScript%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/)
 + [跨域](https://segmentfault.com/a/1190000015597029?utm_source=tag-newest&tdsourcetag=s_pcqq_aiomsg)
+
+
+## <label style="color:rgb(84, 155, 255)">#vue</label>
+
++ [vue源码分析](https://www.bilibili.com/video/av75366883)
++ [逐行剖析Vue.js源码](https://nlrx-wjc.github.io/Learn-Vue-Source-Code/globalAPI/#_1-vue-extend)
