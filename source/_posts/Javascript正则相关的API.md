@@ -1,15 +1,9 @@
-<!--
- * @Author: xuhong
- * @Date: 2020-05-17 15:49:57
- * @LastEditTime: 2020-05-17 21:58:12
- * @FilePath: \hexo\source\_posts\js正则相关的API.md
---> 
 ---
-title: js正则相关的API
+title: JavaScript正则相关的API
 date: 2020-05-17 15:49:57
 tags:
+- 正则
 ---
-
 
 ## RegExp对象
 
