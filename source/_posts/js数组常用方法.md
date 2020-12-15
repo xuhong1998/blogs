@@ -306,7 +306,7 @@ some()：判断数组中是否存在满足条件的项，只要有一项满足�
 	console.log(result2);  // true
 ```
 
-2个归并方法：reduce()、reduceRight()
+## 2个归并方法：reduce()、reduceRight()
 
 这两个方法都会迭代数组中的所有项，然后生成一个最终返回值。他们都接收两个参数，第一个参数是每一项调用的函数，函数接受四个参数分别是初始值，当前值，索引值，和当前数组，函数需要返回一个值，这个值会在下一次迭代中作为初始值。第二个参数是迭代初始值，参数可选，如果缺省，初始值为数组第一项，从数组第一个项开始叠加，缺省参数要比正常传值少一次运算。
 
@@ -530,22 +530,20 @@ fromIndex：可选。从该索引处开始查找 searchElement。如果为负值
 
 语法：array.copyWithin(target ,  start ,  end)
 
-target ：必需。从该位置开始替换数据。
+target ：必需。从该位置开始替换数据, 如果为负值，表示倒数(末尾开始计算)。
 
 start ：可选。从该位置开始读取数据，默认为 0 。如果为负值，表示倒数。
 
 end： 可选。到该位置前停止读取数据，默认等于数组长度。如果为负值，表示倒数。
 
 ```javaScript
-	let arr = ["a","b","c","d"];
-	let result1 = arr.includes("b");
-	let result2 = arr.includes("b",2);
-	let result3 = arr.includes("b",-1);
-	let result4 = arr.includes("b",-3);
-	console.log(result1);  // true
-	console.log(result2);  // false
-	console.log(result3);  // flase
-	console.log(result4);  // true
+	const array1 = ['a', 'b', 'c', 'd', 'e'];
+
+	console.log(array1.copyWithin(0, 1));
+	// expected output: Array [ 'b', 'c', 'd', 'e', 'e' ]
+
+	console.log(array1.copyWithin(1, 3, 4));
+	// expected output: Array [ 'b', 'e', 'd', 'e', 'e' ]
 ```
 
 
