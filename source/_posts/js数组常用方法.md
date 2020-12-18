@@ -329,15 +329,10 @@ initialValue：可选。传递给函数的初始值。
 下面代码实现数组求和：
 
 ```javaScript
-	var arr = [1,4,6,8,10];
-	var result1 = arr.some(function(currentValue){
-	    return currentValue> 10;
-	});
-	console.log(result1);  // false
-	var result2 = arr.some(function(currentValue){
-	    return currentValue> 5;
-	});
-	console.log(result2);  // true
+	let arr = [5, 3, 9, 7, 4, 4]
+	let sum = 0
+	sum = arr.reduceRight((sum, value) => sum + value)
+	console.log(sum)  //32
 ```
 
 # ES6数组新增方法（注意浏览器兼容）
