@@ -2,14 +2,9 @@
   .nav
     li
       if is_home()
-        a.current(href="/")= __('Home')					
+        a.current(href="/blogs/")= __('Home')					
       else
         a(href="/")= __('Home')	
-    li
-      if is_current('Tags')
-        a.current(href="http://www.xuhong.me/2019/08/01/Tags/")= __('Tags')			
-      else
-        a(href="http://www.xuhong.me/2019/08/01/Tags/")= __('Tags')
     li
     //-   if is_archive()
     //-     a.current(href="/archives")= __('Archive')
