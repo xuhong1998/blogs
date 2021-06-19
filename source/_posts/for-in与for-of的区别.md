@@ -1,14 +1,14 @@
 ---
-title: javaScript二叉树
-date: 2021-6-19
-tags: 
-- javaScript 基础知识
+title: for in与for of的区别
+date: 2021-06-19 16:37:08
+tags:
 ---
+
 
 ## for in
 
-- 1. 以任意顺序遍历一个对象的除Symbol以外的可枚举属性。
-- 2. 索引为字符串，不能直接进行几何运算
+- 1.以任意顺序遍历一个对象的除Symbol以外的可枚举属性。
+- 2.索引为字符串，不能直接进行几何运算
 
   因此for...in不应该用于迭代一个关注索引顺序的 Array。for...in最常用于调试，可以更方便的去检查对象的属性。
 
@@ -42,8 +42,8 @@ for(const key in obj) {
 
 ## for of 
 
-- 1. for...of语句在可迭代对象（包括 Array，Map，Set，String，TypedArray，arguments 对象等等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句
-- 2. 对于for...of的循环，可以由break, throw  continue  或return终止。在这些情况下，迭代器关闭。
+- 1.for...of语句在可迭代对象（包括 Array，Map，Set，String，TypedArray，arguments 对象等等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句
+- 2.对于for...of的循环，可以由break, throw  continue  或return终止。在这些情况下，迭代器关闭。
 
 ```javaScript
 const arr = [1, 2, 3, 4, 5, 6]
